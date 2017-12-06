@@ -16,7 +16,7 @@ class Battle < Sinatra::Base
   get '/battle' do
     @p1 = session[:p1]
     @p2 = session[:p2]
-    "#{@p1} VS #{@p2}"
+    erb(:ready)
   end
 
   post '/players' do

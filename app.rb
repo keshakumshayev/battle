@@ -4,7 +4,7 @@ require 'shotgun'
 
 class Battle < Sinatra::Base
   get '/' do
-    'Testing infrastructure working!'
+    erb(:player_names)
   end
 
   run! if app_file == $0

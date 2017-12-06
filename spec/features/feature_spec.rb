@@ -18,3 +18,11 @@ feature 'entering player names' do
     expect(page).to have_content("Jimmy VS Lemonade")
   end
 end
+
+feature 'viewing HP values' do
+  scenario 'player 1 sees player 2\'s HP' do
+    visit '/battle'
+    #binding.pry
+    expect(page).to have_content("P2's HP: 100")
+  end
+end

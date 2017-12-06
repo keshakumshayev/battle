@@ -11,10 +11,7 @@ end
 feature 'entering player names' do
 
   scenario 'players enter names' do
-    visit '/'
-    fill_in('p1', with: 'Jimmy')
-    fill_in('p2', with: 'Lemonade')
-    click_button("Battle!")
+    sign_in_and_play
     expect(page).to have_content("Jimmy VS Lemonade")
   end
 end

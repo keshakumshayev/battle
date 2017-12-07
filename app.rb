@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'shotgun'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
 
@@ -12,10 +13,14 @@ class Battle < Sinatra::Base
   get '/battle' do
     params[:p2hp] = $p2.hp
     @p2hp = params[:p2hp]
+    $game = Game.new
     erb(:ready)
   end
 
   get '/attack' do
+    $game.attack($p2)
+    params[:p2hp] = $p2.hp
+    @p2hp = params[:p2hp]
     erb(:attack)
   end
 

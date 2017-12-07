@@ -1,13 +1,5 @@
 require 'pry'
 
-feature 'tseting infrastructure working' do
-
-  scenario 'homepage content matching' do
-    visit '/first_test'
-    expect(page).to have_content 'Testing infrastructure working!'
-  end
-end
-
 feature 'entering player names' do
 
   scenario 'players enter names' do
@@ -19,7 +11,19 @@ end
 feature 'viewing HP values' do
   scenario 'player 1 sees player 2\'s HP' do
     visit '/battle'
-    #binding.pry
     expect(page).to have_content("P2's HP: 100")
+  end
+end
+
+feature 'attack' do
+  scenario 'player 1 can attack player 2' do
+    visit '/battle'
+    expect(page).to have_selector("input[type='submit'][value='Attack']")
+  end
+
+  scenario 'player 1 attacks player 2' do
+    sign_in_and_play
+    click_button("Attack")
+    expect(page).to have_content("Jimmy attacked Lemonade")
   end
 end

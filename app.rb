@@ -1,13 +1,8 @@
 require 'sinatra'
 require 'shotgun'
 
-
 class Battle < Sinatra::Base
   enable :sessions
-
-  get '/first_test' do
-    'Testing infrastructure working!'
-  end
 
   get '/' do
     erb(:player_names)
@@ -17,6 +12,12 @@ class Battle < Sinatra::Base
     @p1 = session[:p1]
     @p2 = session[:p2]
     erb(:ready)
+  end
+
+  get '/attack' do
+    @p1 = session[:p1]
+    @p2 = session[:p2]
+    "#{@p1} attacked #{@p2}"
   end
 
   post '/players' do

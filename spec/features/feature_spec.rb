@@ -10,14 +10,14 @@ end
 
 feature 'viewing HP values' do
   scenario 'player 1 sees player 2\'s HP' do
-    visit '/battle'
+    sign_in_and_play
     expect(page).to have_content("Lemonade's HP: 100")
   end
 end
 
 feature 'attack' do
   scenario 'player 1 can attack player 2' do
-    visit '/battle'
+    visit '/play'
     expect(page).to have_selector("input[type='submit'][value='Attack']")
   end
 
@@ -32,6 +32,5 @@ feature 'attack' do
     click_button("Attack")
     expect(page).to have_content("Lemonade's HP lowered to 90")
   end
-
 
 end

@@ -11,7 +11,7 @@ end
 feature 'viewing HP values' do
   scenario 'player 1 sees player 2\'s HP' do
     visit '/battle'
-    expect(page).to have_content("P2's HP: 100")
+    expect(page).to have_content("Lemonade's HP: 100")
   end
 end
 
@@ -26,4 +26,12 @@ feature 'attack' do
     click_button("Attack")
     expect(page).to have_content("Jimmy attacked Lemonade")
   end
+
+  scenario 'player 2 loses 10 HP after attack' do
+    sign_in_and_play
+    click_button("Attack")
+    expect(page).to have_content("Lemonade's HP lowered to 90")
+  end
+
+
 end

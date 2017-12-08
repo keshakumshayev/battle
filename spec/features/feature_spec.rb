@@ -17,7 +17,7 @@ end
 
 feature 'attack' do
   scenario 'player 1 can attack player 2' do
-    visit '/play'
+    sign_in_and_play
     expect(page).to have_selector("input[type='submit'][value='Attack']")
   end
 
@@ -33,4 +33,17 @@ feature 'attack' do
     expect(page).to have_content("Lemonade's HP lowered to 90")
   end
 
+end
+
+
+feature 'turn player' do
+  scenario 'it is player 1\'s turn' do
+    sign_in_and_play
+    expect(page).to have_content("Jimmy's turn.")
+  end
+  scenario 'it is player 2\'s turn' do
+    sign_in_and_play
+    click_button("Attack")
+    expect(page).to have_content("Lemonade's turn.")
+  end
 end

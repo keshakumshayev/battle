@@ -18,12 +18,10 @@ class Battle < Sinatra::Base
     p2 = Player.new(session[:p2])
     $game = Game.new(p1,p2)
     session[:game] = $game
-
     redirect '/play'
   end
 
   get '/play' do
-
     @game = session[:game]
     params[:p2hp] = @game.p2.hp
     @p2hp = params[:p2hp]

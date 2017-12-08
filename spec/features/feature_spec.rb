@@ -49,16 +49,19 @@ feature 'turn player' do
   scenario 'it is player 1\'s turn initially' do
     sign_in_and_play
     expect($game.turn_player).to eq $game.p1
+    expect(page).to have_content("Jimmy's turn")
   end
   scenario 'it is player 2\'s turn after player 1 attacks' do
     sign_in_and_play
     click_button("Attack")
     expect($game.turn_player).to eq $game.p2
+    expect(page).to have_content("Lemonade's turn")
   end
   scenario 'it is player 1\'s turn after player 2 attacks' do
     sign_in_and_play
     click_button("Attack")
     click_button("Attack")
     expect($game.turn_player).to eq $game.p1
+    expect(page).to have_content("Jimmy's turn")
   end
 end

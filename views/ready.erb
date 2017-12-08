@@ -1,0 +1,8 @@
+<div align='center'><%= "#{@game.p1.name} VS #{@game.p2.name}" %><div>
+<div align='right'><%= "#{@game.p2.name}" %>'s HP: <%= @p2hp %><div>
+<div align='left'><%= "#{@game.p1.name}" %>'s HP: <%= @p1hp %><div>
+
+<br>
+<form action='/attack' align='center'>
+  <input type='submit' value='Attack' >
+</form>

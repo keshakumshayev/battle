@@ -30,10 +30,11 @@ class Battle < Sinatra::Base
 
   get '/attack' do
     @game = session[:game]
-    @game.attack(@game.p2)
+    @game.turn_player == @game.p1 ? @game.attack(@game.p2) : @game.attack(@game.p1)
+
     params[:p2hp] = @game.p2.hp
     @p2hp = params[:p2hp]
-    erb(:attack)
+    redirect '/play'
   end
 
   run! if app_file == $0

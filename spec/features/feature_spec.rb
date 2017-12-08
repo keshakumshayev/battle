@@ -24,26 +24,19 @@ feature 'attack' do
   scenario 'player 1 attacks player 2' do
     sign_in_and_play
     click_button("Attack")
-    expect(page).to have_content("Jimmy attacked Lemonade")
+    expect(page).to have_content("Lemonade's HP: 90")
   end
-
-  scenario 'player 2 loses 10 HP after attack' do
-    sign_in_and_play
-    click_button("Attack")
-    expect(page).to have_content("Lemonade's HP lowered to 90")
-  end
-
 end
 
 
 feature 'turn player' do
   scenario 'it is player 1\'s turn' do
     sign_in_and_play
-    expect(page).to have_content("Jimmy's turn.")
+    expect($game.turn_player).to eq $game.p1
   end
   scenario 'it is player 2\'s turn' do
     sign_in_and_play
     click_button("Attack")
-    expect(page).to have_content("Lemonade's turn.")
+    expect($game.turn_player).to eq $game.p2
   end
 end

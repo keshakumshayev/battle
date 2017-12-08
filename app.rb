@@ -31,7 +31,7 @@ class Battle < Sinatra::Base
   get '/attack' do
     @game = session[:game]
     @game.turn_player == @game.p1 ? @game.attack(@game.p2) : @game.attack(@game.p1)
-
+    $game = session[:game]
     params[:p2hp] = @game.p2.hp
     @p2hp = params[:p2hp]
     redirect '/play'

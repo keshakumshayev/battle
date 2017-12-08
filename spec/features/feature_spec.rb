@@ -37,6 +37,7 @@ feature 'turn player' do
   scenario 'it is player 2\'s turn' do
     sign_in_and_play
     click_button("Attack")
+
     expect($game.turn_player).to eq $game.p2
   end
 end

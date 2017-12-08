@@ -23,6 +23,8 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @game = session[:game]
+    params[:p1hp] = @game.p1.hp
+    @p1hp = params[:p1hp]
     params[:p2hp] = @game.p2.hp
     @p2hp = params[:p2hp]
     erb(:ready)
@@ -32,6 +34,8 @@ class Battle < Sinatra::Base
     @game = session[:game]
     @game.turn_player == @game.p1 ? @game.attack(@game.p2) : @game.attack(@game.p1)
     $game = session[:game]
+    params[:p1hp] = @game.p1.hp
+    @p1hp = params[:p1hp]
     params[:p2hp] = @game.p2.hp
     @p2hp = params[:p2hp]
     redirect '/play'
